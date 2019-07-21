@@ -47,7 +47,10 @@ setup(
     entry_points={
         'invenio_oarepo_mapping_includes': [
             'invenio_oarepo_multilingual=invenio_oarepo_multilingual.included_mappings'
-        ]
+        ],
+        'invenio_jsonschemas.schemas': [
+            'invenio_oarepo_multilingual = invenio_oarepo_multilingual.jsonschemas'
+        ],
     },
     include_package_data=True,
     setup_requires=setup_requires,
