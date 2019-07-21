@@ -1,0 +1,38 @@
+{
+  "definitions": {
+    "multilingualString": {
+      "$id": "#multilingualString",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "lang"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        }
+      }
+    },
+    "multilingualKeyword": {
+      "$id": "#multilingualKeyword",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "lang"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
