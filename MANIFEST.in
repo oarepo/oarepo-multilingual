@@ -11,3 +11,6 @@ exclude *.yml
 exclude run-tests.sh
 exclude tests
 include *.rst
+
+recursive-include invenio_oarepo_multilingual *.py
+recursive-include invenio_oarepo_multilingual *.json
