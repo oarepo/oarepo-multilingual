@@ -2,7 +2,7 @@
   "MultilingualString": {
     "type": "nested",
     "properties": {
-      "name": {
+      "value": {
         "type": "text",
         "fields": {
           "keyword": {
@@ -20,7 +20,7 @@
   "MultilingualKeyword": {
     "type": "nested",
     "properties": {
-      "name": {
+      "value": {
         "type": "keyword"
       },
       "lang": {
