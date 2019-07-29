@@ -10,6 +10,8 @@ class MultilingualStringPartSchemaV1(StrictKeysMixin):
     lang = SanitizedUnicode(required=True)
 
 
-MultilingualStringSchemaV1 = List(Nested(MultilingualStringPartSchemaV1))
+def MultilingualStringSchemaV1():
+    return Nested(MultilingualStringPartSchemaV1(), many=True)
+
 
 __all__ = ('MultilingualStringSchemaV1',)
