@@ -1,6 +1,6 @@
 {
   "MultilingualString": {
-    "type": "nested",
+    "type": "object",
     "properties": {
       "value": {
         "type": "text",
@@ -18,7 +18,7 @@
     }
   },
   "MultilingualKeyword": {
-    "type": "nested",
+    "type": "object",
     "properties": {
       "value": {
         "type": "keyword"
