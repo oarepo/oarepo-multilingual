@@ -11,7 +11,7 @@ class MultilingualStringPartSchemaV1(StrictKeysMixin):
 
 
 def MultilingualStringSchemaV1(**kwargs):
-    return Nested(MultilingualStringPartSchemaV1(), many=True, **kwargs)
+    return Nested(MultilingualStringPartSchemaV1(many=True), many=True, **kwargs)
 
 
 __all__ = ('MultilingualStringSchemaV1',)
