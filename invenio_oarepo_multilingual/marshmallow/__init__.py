@@ -13,7 +13,7 @@ class MultilingualStringPartSchemaV1(StrictKeysMixin):
 
 
 def MultilingualStringSchemaV1(**kwargs):
-    """Returns a schema for multilingual string."""
+    """Return a schema for multilingual string."""
     return Nested(MultilingualStringPartSchemaV1(many=True), many=True, **kwargs)
 
 
