@@ -1,0 +1,24 @@
+{
+  "definitions": {
+    "multilingualString": {
+      "$id": "#multilingualString",
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties":
+      {
+        "^[a-z][a-z]$" : {"type": "string"},
+        "^[a-z][a-z]-[a-z][a-z]$" : {"type": "string"}
+      }
+    },
+    "multilingualKeyword": {
+      "$id": "#multilingualKeyword",
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties":
+      {
+        "^[a-z][a-z]$" : {"type": "string"},
+        "^[a-z][a-z]-[a-z][a-z]$" : {"type": "string"}
+      }
+    }
+  }
+}
