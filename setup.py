@@ -12,7 +12,9 @@ install_requires = [
 tests_require = [
     'pytest>=4.6.3',
     'jsonschema',
-    'pydocstyle'
+    'pydocstyle',
+    'isort',
+    'check-manifests'
 ]
 
 extras_require = {
