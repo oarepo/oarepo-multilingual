@@ -7,10 +7,18 @@ from jsonschema import validate
 
 def get_schema():
     """This function loads the given schema available"""
-
-    with open('./test.json', 'r') as file:
-        schema = json.load(file)
-    schema_url = pathlib.Path("./test_json").absolute().as_uri()
+    script = False
+    try:
+        with open('./test.json', 'r') as file:
+            schema = json.load(file)
+    except:
+        with open('./tests/test.json', 'r') as file:
+            schema = json.load(file)
+        script = True
+    if script:
+        schema_url = pathlib.Path("./tests/test_json").absolute().as_uri()
+    else:
+        schema_url = pathlib.Path("./test_json").absolute().as_uri()
     return schema, schema_url
 
 def validation(data, schema, base_uri):
