@@ -7,6 +7,7 @@ from setuptools import setup
 readme = open('README.rst').read()
 
 install_requires = [
+    'marshmallow'
 ]
 
 tests_require = [
