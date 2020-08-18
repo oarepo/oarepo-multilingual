@@ -1,9 +1,10 @@
 import json
-import traceback
-import jsonschema
 import pathlib
+import traceback
 
+import jsonschema
 from jsonschema import validate
+
 
 def get_schema():
     """This function loads the given schema available"""
