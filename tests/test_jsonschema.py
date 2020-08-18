@@ -9,10 +9,10 @@ def get_schema():
     """This function loads the given schema available"""
     script = False
     try:
-        with open('./test.json', 'r') as file:
+        with open('testSchema.json', 'r') as file:
             schema = json.load(file)
     except:
-        with open('./tests/test.json', 'r') as file:
+        with open('./tests/testSchema.json', 'r') as file:
             schema = json.load(file)
         script = True
     if script:
