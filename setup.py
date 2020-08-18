@@ -13,8 +13,7 @@ tests_require = [
     'pytest>=4.6.3',
     'jsonschema',
     'pydocstyle',
-    'isort',
-    'check-manifests'
+    'isort'
 ]
 
 extras_require = {
