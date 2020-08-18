@@ -18,7 +18,6 @@ def validation(data, schema, base_uri):
     try:
         validate(instance=data, schema=schema, resolver =resolve)
     except:
-        traceback.print_exc()
         return False
     return True
 
@@ -27,7 +26,6 @@ def validationError(data, schema, base_uri):
     try:
         validate(instance=data, schema=schema, resolver =resolve)
     except:
-        traceback.print_exc()
         return True
     return False
 
