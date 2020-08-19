@@ -1,10 +1,15 @@
 import json
 import pathlib
-import traceback
-
 import jsonschema
 from jsonschema import validate
+# -*- coding: utf-8 -*-
+#
+# Copyright (C) 2019 CESNET.
+#
+# Invenio OpenID Connect is free software; you can redistribute it and/or modify it
+# under the terms of the MIT License; see LICENSE file for more details.
 
+"""Simple test of version import."""
 
 def get_schema():
     """This function loads the given schema available"""
@@ -23,6 +28,7 @@ def get_schema():
     return schema, schema_url
 
 def validation(data, schema, base_uri):
+    """This function validates given instance against given schema"""
     resolve = jsonschema.RefResolver(base_uri, base_uri)
     try:
         validate(instance=data, schema=schema, resolver =resolve)
@@ -39,7 +45,7 @@ def validationError(data, schema, base_uri):
     return False
 
 def test_json():
-
+    """Test for json schemas"""
     schema, schema_url = get_schema()
 
     data = json.loads('{"title": {"cs" : "xxx","cs-en": "yyyy", "em": "jejej"}}')
