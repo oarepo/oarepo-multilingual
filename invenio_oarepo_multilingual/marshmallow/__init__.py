@@ -1,8 +1,19 @@
 """Support for multilingual strings in oarepo invenio repository."""
 
-from marshmallow.fields import List, Nested
-from marshmallow import Schema, INCLUDE, fields, validate, RAISE, post_load, validates_schema, ValidationError
 import re
+
+from marshmallow import (
+    INCLUDE,
+    RAISE,
+    Schema,
+    ValidationError,
+    fields,
+    post_load,
+    validate,
+    validates_schema,
+)
+from marshmallow.fields import List, Nested
+
 
 class MultilingualStringPartSchemaV2(Schema):
 

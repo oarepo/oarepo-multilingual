@@ -9,11 +9,11 @@
 
 from __future__ import absolute_import, print_function
 
-import marshmallow
 import pytest
-from marshmallow import ValidationError
 
+import marshmallow
 from invenio_oarepo_multilingual.marshmallow import MultilingualStringSchemaV2
+from marshmallow import ValidationError
 
 
 def test_marshmallow():
