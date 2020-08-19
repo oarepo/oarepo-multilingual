@@ -29,19 +29,19 @@ class MultilingualStringPartSchemaV2(Schema):
     class Meta:
         unknown = INCLUDE
 
-class MultilingualStringPartSchemaV1(Schema):
-    """Multilingual string."""
-
-    value = fields.Str(required=True)
-    lang = fields.Str(required=True)
-
-    class Meta:
-        unknown = RAISE
-
-
-def MultilingualStringSchemaV1(**kwargs):
-    """Return a schema for multilingual string."""
-    return Nested(MultilingualStringPartSchemaV1(many=True), many=True,  **kwargs)
+# class MultilingualStringPartSchemaV1(Schema):
+#     """Multilingual string."""
+#
+#     value = fields.Str(required=True)
+#     lang = fields.Str(required=True)
+#
+#     class Meta:
+#         unknown = RAISE
+#
+#
+# def MultilingualStringSchemaV1(**kwargs):
+#     """Return a schema for multilingual string."""
+#     return Nested(MultilingualStringPartSchemaV1(many=True), many=True,  **kwargs)
 
 def MultilingualStringSchemaV2(**kwargs):
     """Return a schema for multilingual string."""
