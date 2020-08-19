@@ -52,7 +52,7 @@ setup(
         ],
         'invenio_jsonschemas.schemas': [
             'invenio_oarepo_multilingual = invenio_oarepo_multilingual.jsonschemas'
-        ],
+        ]
     },
     include_package_data=True,
     setup_requires=setup_requires,
