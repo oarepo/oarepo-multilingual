@@ -5,15 +5,13 @@
 # Invenio OpenID Connect is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-"""Simple test of version import."""
-
 from flask import Flask
 
 from invenio_oarepo_multilingual.mapping.mapping_handler import handler
 
 
 def test_mapping():
-    """Simple test of version import."""
+    """Simple test of mapping."""
     app = Flask('testapp')
     app.config = {
             "SUPPORTED_LANGUAGES": ["cs", "en"]

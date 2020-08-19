@@ -5,7 +5,6 @@
 # Invenio OpenID Connect is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-"""Simple test of version import."""
 
 from __future__ import absolute_import, print_function
 
@@ -17,7 +16,7 @@ from marshmallow import ValidationError
 
 
 def test_marshmallow():
-    """Test version import."""
+    """Test marshmallow."""
     class MD(marshmallow.Schema):
          title = MultilingualStringSchemaV2()
 
