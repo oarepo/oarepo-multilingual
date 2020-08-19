@@ -7,11 +7,13 @@
 
 """Simple test of version import."""
 
-from invenio_oarepo_multilingual.mapping.mapping_handler import handler
 from flask import Flask
 
-def test_mapping():
+from invenio_oarepo_multilingual.mapping.mapping_handler import handler
 
+
+def test_mapping():
+    """Simple test of version import."""
     app = Flask('testapp')
     app.config = {
             "SUPPORTED_LANGUAGES": ["cs", "en"]

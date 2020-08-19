@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*- #
-
+"""Simple test of version import."""
 def handler(app,resource, json_pointer):
     """Test version import."""
     languages = app.config["SUPPORTED_LANGUAGES"]

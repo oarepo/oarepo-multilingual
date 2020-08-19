@@ -1,7 +1,9 @@
 import json
 import pathlib
+
 import jsonschema
 from jsonschema import validate
+
 # -*- coding: utf-8 -*-
 #
 # Copyright (C) 2019 CESNET.
@@ -37,6 +39,7 @@ def validation(data, schema, base_uri):
     return True
 
 def validationError(data, schema, base_uri):
+    """Simple test of version import."""
     resolve = jsonschema.RefResolver(base_uri, base_uri)
     try:
         validate(instance=data, schema=schema, resolver =resolve)
