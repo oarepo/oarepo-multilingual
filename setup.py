@@ -16,7 +16,9 @@ tests_require = [
     'jsonschema',
     'pydocstyle',
     'isort',
-    'check-manifest'
+    'check-manifest',
+    'pytest-cov',
+    'pytest-pep8'
 ]
 
 extras_require = {

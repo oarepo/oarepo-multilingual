@@ -22,9 +22,9 @@ class MultilingualStringPartSchemaV2(Schema):
         list_data = list(data)
         for s in list_data:
             if not re.match('^[a-z][a-z]$', s) and not re.match('^[a-z][a-z]-[a-z][a-z]$',s):
-                raise ValidationError("Wrong language name")
+                raise ValidationError(s,"Wrong language name")
             if not isinstance((data[s]),str):
-                raise ValidationError("Wrong data type")
+                raise ValidationError(data[s],":Wrong data type")
 
     class Meta:
         unknown = INCLUDE

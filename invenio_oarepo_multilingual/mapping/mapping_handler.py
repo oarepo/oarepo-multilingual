@@ -6,16 +6,14 @@ def handler(app,resource, json_pointer):
 
     data_dict= dict()
 
-    for x in range(0,len(languages)):
-        data_dict.update({languages[x]: {"type" : "text",
+    for x in languages:
+        data_dict[x] = {"type" : "text",
                                                'fields': {
                                                    "keywords":{
                                                        "type": "keyword"
                                                    }
                                                }
                                          }
-                          }
-                         )
 
     return {
         "type": "object",
