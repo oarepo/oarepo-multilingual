@@ -23,12 +23,12 @@
 # SOFTWARE.
 #
 
-"""Version information for invenio_oarepo_multilingual repository.
+"""Version information for oarepo_multilingual repository.
 
-This file is imported by ``invenio_oarepo_multilingual.__init__``,
+This file is imported by ``oarepo_multilingual.__init__``,
 and parsed by ``setup.py``.
 """
 
 from __future__ import absolute_import, print_function
 
-__version__ = '1.1.2'
+__version__ = '2.0.0a1'

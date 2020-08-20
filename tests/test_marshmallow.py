@@ -5,59 +5,49 @@
 # Invenio OpenID Connect is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-"""Simple test of version import."""
 
 from __future__ import absolute_import, print_function
 
-import marshmallow
 import pytest
-from marshmallow import ValidationError
 
-from invenio_oarepo_multilingual.marshmallow import MultilingualStringSchemaV1
+import marshmallow
+from marshmallow import ValidationError
+from oarepo_multilingual.marshmallow import MultilingualStringSchemaV2
 
 
 def test_marshmallow():
-    """Test version import."""
+    """Test marshmallow."""
     class MD(marshmallow.Schema):
-        title = MultilingualStringSchemaV1()
+         title = MultilingualStringSchemaV2()
 
-    data = {'title': [
+    data = {'title':
         {
-            'lang': 'cs',
-            'value': 'blah'
+            "en": "something",
+            "cs-cz": "neco",
+            "cs": "neco jineho"
         }
-    ]}
-
-    if marshmallow.__version_info__[0] == 2:
-        # marshmallow 2
-        assert data == MD().load(data).data
-    else:
-        assert data == MD().load(data)
-
-    data = {
-        'title': 'blah'
     }
 
-    if marshmallow.__version_info__[0] == 2:
-        # marshmallow 2
-        print(MD().load(data))
-        assert MD().load(data).errors == {'title': ['Invalid type.']}
-    else:
-        with pytest.raises(ValidationError):
-            MD().load(data)
+    assert data == MD().load(data)
 
-    data = {'title': [
+    data = {'title':
         {
-            'lang': 'cs',
-            'value': 'blah',
-            'extra': 'abc'
+            "en": "something",
+            "enus": "something different"
         }
-    ]}
+    }
 
-    if marshmallow.__version_info__[0] == 2:
-        # marshmallow 2
-        print(MD().load(data))
-        assert MD().load(data).errors == {'title': {0: {'extra': ['Unknown field name extra']}}}
-    else:
-        with pytest.raises(ValidationError):
-            MD().load(data)
+
+    with pytest.raises(ValidationError):
+        MD().load(data)
+
+    data = {'title':
+        {
+            "en": "something",
+            "en-us": 1
+        }
+    }
+
+
+    with pytest.raises(ValidationError):
+        MD().load(data)

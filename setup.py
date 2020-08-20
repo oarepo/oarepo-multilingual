@@ -5,33 +5,29 @@ import os
 from setuptools import setup
 
 readme = open('README.rst').read()
-OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.1.1')
 
 install_requires = [
+    'marshmallow',
+    'flask'
 ]
 
 tests_require = [
     'pytest>=4.6.3',
+    'jsonschema',
+    'pydocstyle',
+    'isort',
+    'check-manifest',
+    'pytest-cov',
+    'pytest-pep8'
 ]
 
 extras_require = {
-    'postgresql': [
-        'invenio-db[postgresql]>=1.0.0b3',
-    ],
-    'mysql': [
-        'invenio-db[mysql]>=1.0.0b3',
-    ],
-    'sqlite': [
-        'invenio-db>=1.0.0b3',
-    ],
     'tests': [
         *tests_require,
-        'oarepo[tests]~={version}'.format(
-            version=OAREPO_VERSION)],
+        ],
     'tests-es7': [
         *tests_require,
-        'oarepo[tests-es7]~={version}'.format(
-            version=OAREPO_VERSION)],
+        ],
 }
 
 setup_requires = [
@@ -39,26 +35,26 @@ setup_requires = [
 ]
 
 g = {}
-with open(os.path.join('invenio_oarepo_multilingual', 'version.py'), 'rt') as fp:
+with open(os.path.join('oarepo_multilingual', 'version.py'), 'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
 
 setup(
-    name="invenio_oarepo_multilingual",
+    name="oarepo_multilingual",
     version=version,
-    url="https://github.com/oarepo/invenio-oarepo-multilingual",
+    url="https://github.com/oarepo/oarepo-multilingual",
     license="MIT",
     author="Miroslav Simek",
     author_email="miroslav.simek@vscht.cz",
     description="Multilingual support for OARepo",
     zip_safe=False,
-    packages=['invenio_oarepo_multilingual'],
+    packages=['oarepo_multilingual'],
     entry_points={
-        'invenio_oarepo_mapping_includes': [
-            'invenio_oarepo_multilingual=invenio_oarepo_multilingual.included_mappings'
+        'oarepo_mapping_handlers': [
+            'multilingual=oarepo_multilingual.mapping.mapping_handler:handler'
         ],
-        'invenio_jsonschemas.schemas': [
-            'invenio_oarepo_multilingual = invenio_oarepo_multilingual.jsonschemas'
+        'jsonschemas.schemas': [
+            'oarepo_multilingual = oarepo_multilingual.jsonschemas'
         ],
     },
     include_package_data=True,
