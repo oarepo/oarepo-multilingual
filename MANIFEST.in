@@ -12,6 +12,6 @@ exclude run-tests.sh
 exclude tests
 include *.rst
 
-recursive-include invenio_oarepo_multilingual *.py
-recursive-include invenio_oarepo_multilingual *.json
+recursive-include oarepo_multilingual *.py
+recursive-include oarepo_multilingual *.json
 recursive-include tests *.json

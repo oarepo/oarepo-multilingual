@@ -23,7 +23,8 @@ tests_require = [
 
 extras_require = {
     'tests': [
-        *tests_require,],
+        *tests_require,
+        ],
     'tests-es7': [
         *tests_require,
         ],
@@ -34,26 +35,26 @@ setup_requires = [
 ]
 
 g = {}
-with open(os.path.join('invenio_oarepo_multilingual', 'version.py'), 'rt') as fp:
+with open(os.path.join('oarepo_multilingual', 'version.py'), 'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
 
 setup(
-    name="invenio_oarepo_multilingual",
+    name="oarepo_multilingual",
     version=version,
-    url="https://github.com/oarepo/invenio-oarepo-multilingual",
+    url="https://github.com/oarepo/oarepo-multilingual",
     license="MIT",
     author="Miroslav Simek",
     author_email="miroslav.simek@vscht.cz",
     description="Multilingual support for OARepo",
     zip_safe=False,
-    packages=['invenio_oarepo_multilingual'],
+    packages=['oarepo_multilingual'],
     entry_points={
-        'invenio_oarepo_mapping_includes': [
-            'invenio_oarepo_multilingual=invenio_oarepo_multilingual.included_mappings'
+        'oarepo_mapping_handlers': [
+            'multilingual=oarepo_multilingual.mapping.mapping_handler:handler'
         ],
-        'invenio_jsonschemas.schemas': [
-            'invenio_oarepo_multilingual = invenio_oarepo_multilingual.jsonschemas'
+        'jsonschemas.schemas': [
+            'oarepo_multilingual = oarepo_multilingual.jsonschemas'
         ],
     },
     include_package_data=True,

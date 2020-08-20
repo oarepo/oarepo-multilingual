@@ -11,8 +11,8 @@ from __future__ import absolute_import, print_function
 import pytest
 
 import marshmallow
-from invenio_oarepo_multilingual.marshmallow import MultilingualStringSchemaV2
 from marshmallow import ValidationError
+from oarepo_multilingual.marshmallow import MultilingualStringSchemaV2
 
 
 def test_marshmallow():
@@ -28,11 +28,7 @@ def test_marshmallow():
         }
     }
 
-    if marshmallow.__version_info__[0] == 2:
-        # marshmallow 2
-        assert data == MD().load(data).data
-    else:
-        assert data == MD().load(data)
+    assert data == MD().load(data)
 
     data = {'title':
         {
@@ -41,13 +37,9 @@ def test_marshmallow():
         }
     }
 
-    if marshmallow.__version_info__[0] == 2:
-             # marshmallow 2
-        print(MD().load(data))
-        assert MD().load(data).errors == {'title': ['Invalid type.']}
-    else:
-        with pytest.raises(ValidationError):
-            MD().load(data)
+
+    with pytest.raises(ValidationError):
+        MD().load(data)
 
     data = {'title':
         {
@@ -56,10 +48,6 @@ def test_marshmallow():
         }
     }
 
-    if marshmallow.__version_info__[0] == 2:
-        # marshmallow 2
-        print(MD().load(data))
-        assert MD().load(data).errors == {'title': ['Invalid type.']}
-    else:
-        with pytest.raises(ValidationError):
-            MD().load(data)
+
+    with pytest.raises(ValidationError):
+        MD().load(data)

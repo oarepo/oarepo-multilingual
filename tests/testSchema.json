@@ -6,7 +6,7 @@
   "additionalProperties": false,
    "properties":{
      "title": {
-         "$ref": "../invenio_oarepo_multilingual/jsonschemas/multilingual-v2.0.0.json#/definitions/multilingualString"
+         "$ref": "../oarepo_multilingual/jsonschemas/multilingual-v2.0.0.json#/definitions/multilingualString"
      }
    }
 }

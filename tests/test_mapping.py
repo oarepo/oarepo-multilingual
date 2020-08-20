@@ -7,7 +7,7 @@
 
 from flask import Flask
 
-from invenio_oarepo_multilingual.mapping.mapping_handler import handler
+from oarepo_multilingual.mapping.mapping_handler import handler
 
 
 def test_mapping():
@@ -20,7 +20,7 @@ def test_mapping():
     print(app.config["SUPPORTED_LANGUAGES"])
     assert ["cs", "en"] == app.config["SUPPORTED_LANGUAGES"]
 
-    assert handler(app, "", "") == {'type': 'object', 'properties':
+    assert handler(app) == {'type': 'object', 'properties':
                                         {
                                         'cs': {'type': 'text',
                                                'fields': {
@@ -40,12 +40,12 @@ def test_mapping():
     app.config = {
         "SUPPORTED_LANGUAGES": []
     }
-    assert handler(app, "x", "y") == {'type': 'object', 'properties':
+    assert handler(app) == {'type': 'object', 'properties':
                                                                     {
                                                                     }
                                       }
     app.config = {"SUPPORTED_LANGUAGES": ["cs"]}
-    assert handler(app, "x", "y") == {'type': 'object', 'properties':
+    assert handler(app) == {'type': 'object', 'properties':
         {
             'cs': {'type': 'text',
                    'fields': {

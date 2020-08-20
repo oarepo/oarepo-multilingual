@@ -23,9 +23,9 @@
 # SOFTWARE.
 #
 
-"""Version information for invenio_oarepo_multilingual repository.
+"""Version information for oarepo_multilingual repository.
 
-This file is imported by ``invenio_oarepo_multilingual.__init__``,
+This file is imported by ``oarepo_multilingual.__init__``,
 and parsed by ``setup.py``.
 """
 
