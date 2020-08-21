@@ -2,11 +2,11 @@
 OARepo multilingual data model
 ===============================
 
-.. image:: https://img.shields.io/github/license/oarepo/invenio-oarepo-multilingual.svg
+.. image:: https://img.shields.io/github/license/oarepo/oarepo-multilingual.svg
         :target: https://github.com/oarepo/invenio-oarepo-multilingual/blob/master/LICENSE
 
-.. image:: https://img.shields.io/travis/oarepo/invenio-oarepo-multilingual.svg
-        :target: https://travis-ci.org/oarepo/invenio-oarepo-multilingual
+.. image:: https://img.shields.io/travis/oarepo/oarepo-multilingual.svg
+        :target: https://travis-ci.org/oarepo/oarepo-multilingual
 
 .. image:: https://img.shields.io/coveralls/oarepo/invenio-oarepo-multilingual.svg
         :target: https://coveralls.io/r/oarepo/invenio-oarepo-multilingual
