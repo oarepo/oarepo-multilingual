@@ -2,9 +2,10 @@
 
 import re
 
+from flask import current_app
 from marshmallow import INCLUDE, Schema, ValidationError, validates_schema
 from marshmallow.fields import Nested
-
+import traceback
 
 class MultilingualStringPartSchemaV2(Schema):
 
@@ -16,12 +17,21 @@ class MultilingualStringPartSchemaV2(Schema):
                 raise ValidationError(s,"Wrong language name")
             if not isinstance((data[s]),str):
                 raise ValidationError(s,"Wrong data type")
+            try:
+                if "SUPPORTED_LANGUAGES" in current_app.config and s not in current_app.config["SUPPORTED_LANGUAGES"]:
+                    raise ValidationError(s,"Wrong language name. Supported languages: %s" %current_app.config["SUPPORTED_LANGUAGES"])
+            except ValidationError:
+                raise
+            except:
+                traceback.print_exc()
+                pass
 
     class Meta:
         unknown = INCLUDE
 
-def MultilingualStringSchemaV2(**kwargs):
+def MultilingualStringSchemaV2(languages = None,**kwargs):
     """Return a schema for multilingual string."""
+
     return Nested(MultilingualStringPartSchemaV2(),  **kwargs)
 
 __all__ = ('MultilingualStringSchemaV2',)

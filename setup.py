@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Setup module for flask taxonomy."""
+"""Setup module for flask multilingual."""
 import os
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
-readme = open('README.rst').read()
+readme = open('README.md').read()
+history = open('CHANGES.md').read()
+
 
 install_requires = [
     'marshmallow',
@@ -49,6 +51,8 @@ setup(
     author="Miroslav Simek",
     author_email="miroslav.simek@vscht.cz",
     description="Multilingual support for OARepo",
+    long_description=readme + '\n\n' + history,
+    long_description_content_type='text/markdown',
     zip_safe=False,
     packages=['oarepo_multilingual'],
     entry_points={

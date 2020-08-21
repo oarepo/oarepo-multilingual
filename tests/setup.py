@@ -1,4 +1,4 @@
-"""Test multilingual."""
+"""Setup for test_module."""
 from setuptools import setup
 
 setup(

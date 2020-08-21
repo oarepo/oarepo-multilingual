@@ -11,8 +11,6 @@ from jsonschema import validate
 # Invenio OpenID Connect is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-"""Simple test of version import."""
-
 def get_schema():
     """This function loads the given schema available"""
     script = False
@@ -39,7 +37,7 @@ def validation(data, schema, base_uri):
     return True
 
 def validationError(data, schema, base_uri):
-    """Simple test of version import."""
+    """This function validates given instance against given schema"""
     resolve = jsonschema.RefResolver(base_uri, base_uri)
     try:
         validate(instance=data, schema=schema, resolver =resolve)

@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*- #
 """Simple test of version import."""
-def handler(app,**kwargs):
-    """Test version import."""
-    languages = app.config["SUPPORTED_LANGUAGES"]
-
+def handler(type=None, resource=None, id=None, json_pointer=None,
+            app=None, content=None, root=None, content_pointer=None):
+    """Use this function as handler."""
+    try:
+        languages = app.config["SUPPORTED_LANGUAGES"]
+    except:
+        languages = list()
     data_dict= dict()
 
     for x in languages:

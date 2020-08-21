@@ -9,6 +9,7 @@
 from __future__ import absolute_import, print_function
 
 import pytest
+from flask import Flask
 
 import marshmallow
 from marshmallow import ValidationError
@@ -17,6 +18,10 @@ from oarepo_multilingual.marshmallow import MultilingualStringSchemaV2
 
 def test_marshmallow():
     """Test marshmallow."""
+    app = Flask('testapp')
+    app.config = {
+        "SUPPORTED_LANGUAGES": ["cs", "en", "cs-cz"]
+    }
     class MD(marshmallow.Schema):
          title = MultilingualStringSchemaV2()
 
@@ -28,7 +33,9 @@ def test_marshmallow():
         }
     }
 
+
     assert data == MD().load(data)
+
 
     data = {'title':
         {
