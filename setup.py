@@ -12,13 +12,15 @@ install_requires = [
 ]
 
 tests_require = [
+    'invenio[base,metadata,sqlite,elasticsearch7]',
     'pytest>=4.6.3',
     'jsonschema',
     'pydocstyle',
     'isort',
     'check-manifest',
     'pytest-cov',
-    'pytest-pep8'
+    'pytest-pep8',
+    'oarepo-mapping-includes'
 ]
 
 extras_require = {
@@ -53,7 +55,7 @@ setup(
         'oarepo_mapping_handlers': [
             'multilingual=oarepo_multilingual.mapping.mapping_handler:handler'
         ],
-        'jsonschemas.schemas': [
+        'invenio_jsonschemas.schemas': [
             'oarepo_multilingual = oarepo_multilingual.jsonschemas'
         ],
     },
