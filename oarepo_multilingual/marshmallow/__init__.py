@@ -25,8 +25,7 @@ class MultilingualStringPartSchemaV2(Schema):
                         "SUPPORTED_LANGUAGES"])
             except ValidationError:
                 raise
-            except:
-                #traceback.print_exc()
+            except RuntimeError:
                 pass
 
     class Meta:

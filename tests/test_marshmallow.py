@@ -16,6 +16,20 @@ from marshmallow import ValidationError
 from oarepo_multilingual.marshmallow import MultilingualStringSchemaV2
 
 
+def test_withoutApp():
+    class MD(marshmallow.Schema):
+         title = MultilingualStringSchemaV2()
+
+    data = {'title':
+        {
+            "en": "something",
+            "cs": "neco jineho"
+        }
+    }
+
+    assert data == MD().load(data)
+
+
 def test_marshmallow(app):
     """Test marshmallow."""
     class MD(marshmallow.Schema):
@@ -29,8 +43,17 @@ def test_marshmallow(app):
         }
     }
 
-
     assert data == MD().load(data)
+
+    data = {'title':
+        {
+            "en": "something",
+            "en-us": "jej",
+            "cs": "neco jineho"
+        }
+    }
+    with pytest.raises(ValidationError):
+        MD().load(data)
 
 
     data = {'title':
