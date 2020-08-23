@@ -16,19 +16,15 @@ from marshmallow import ValidationError
 from oarepo_multilingual.marshmallow import MultilingualStringSchemaV2
 
 
-def test_marshmallow():
+def test_marshmallow(app):
     """Test marshmallow."""
-    app = Flask('testapp')
-    app.config = {
-        "SUPPORTED_LANGUAGES": ["cs", "en", "cs-cz"]
-    }
     class MD(marshmallow.Schema):
          title = MultilingualStringSchemaV2()
 
+    app.config.update(SUPPORTED_LANGUAGES = ["cs", "en"])
     data = {'title':
         {
             "en": "something",
-            "cs-cz": "neco",
             "cs": "neco jineho"
         }
     }

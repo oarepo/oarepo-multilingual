@@ -73,18 +73,6 @@ You must specified your languages in format ``"en"`` or ``"en-us"``.
 ```python
 app.config.update(SUPPORTED_LANGUAGES = ["cs", "en"])
 ```
-```python
-    class MD2(marshmallow.Schema):
-        title = MultilingualStringSchemaV2(app.config["SUPPORTED_LANGUAGES"])
-    data = {'title':
-        {
-            "en": "something",
-            "en-us": "something else",
-        }
-    }
-
-    MD2().load(data)
-```
 Elastic search mapping
 ----------------------
 Defince type of your multilingual string as ``multilingual``
