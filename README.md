@@ -23,7 +23,7 @@ JSON Schema
 ----------
 Add this package to your dependencies and use it via ``$ref`` in json schema as ``"[server]/schemas/multilingual-v2.0.0.json#/definitions/multilingual"``.
 
-###Usage example
+### Usage example
 ```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
@@ -53,7 +53,8 @@ For data validation and deserialization.
 If marshmallow validation is performed within application context, languages are validated against SUPPORTED_LANGUAGES config.
 If the validation is performed outside app context, the keys are not checked against a list of languages
 but a generic validation is performed - keys must be in ISO 639-1 or language-region format from RFC 5646.
-###Usage example
+
+### Usage example
 ```python
     class MD(marshmallow.Schema):
          title = MultilingualStringSchemaV2()
@@ -73,14 +74,14 @@ Supported languages validation
 You can specified supported languages in your application configuration in ``SUPPORTED_LANGUAGES`` . Then only these
 languages are allowed as multilingual string. 
 You must specified your languages in format ``"en"`` or ``"en-us"``.
-###Usage example
+### Usage example
 ```python
 app.config.update(SUPPORTED_LANGUAGES = ["cs", "en"])
 ```
 Elastic search mapping
 ----------------------
 Defince type of your multilingual string as ``multilingual``
-###Usage example
+### Usage example
 ```json
 {
   "mappings": {
