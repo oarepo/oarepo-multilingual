@@ -9,16 +9,15 @@
 from __future__ import absolute_import, print_function
 
 import pytest
-from flask import Flask
 
 import marshmallow
 from marshmallow import ValidationError
-from oarepo_multilingual.marshmallow import MultilingualStringSchemaV2
+from oarepo_multilingual.marshmallow import MultilingualStringV2
 
 
 def test_withoutApp():
     class MD(marshmallow.Schema):
-         title = MultilingualStringSchemaV2()
+         title = MultilingualStringV2()
 
     data = {'title':
         {
@@ -33,7 +32,7 @@ def test_withoutApp():
 def test_marshmallow(app):
     """Test marshmallow."""
     class MD(marshmallow.Schema):
-         title = MultilingualStringSchemaV2()
+         title = MultilingualStringV2()
 
     app.config.update(SUPPORTED_LANGUAGES = ["cs", "en"])
     data = {'title':

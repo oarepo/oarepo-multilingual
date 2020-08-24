@@ -49,6 +49,10 @@ Add this package to your dependencies and use it via ``$ref`` in json schema as 
 Marshmallow
 -----------
 For data validation and deserialization.
+
+If marshmallow validation is performed within application context, languages are validated against SUPPORTED_LANGUAGES config.
+If the validation is performed outside app context, the keys are not checked against a list of languages
+but a generic validation is performed - keys must be in ISO 639-1 or language-region format from RFC 5646.
 ###Usage example
 ```python
     class MD(marshmallow.Schema):

@@ -13,10 +13,7 @@ from oarepo_multilingual.mapping.mapping_handler import handler
 def test_mapping():
     """Simple test of mapping."""
     app = Flask('testapp')
-    assert handler() == {'type': 'object', 'properties':
-                                                                    {
-                                                                    }
-                                      }
+
     app.config = {
             "SUPPORTED_LANGUAGES": ["cs", "en"]
     }
