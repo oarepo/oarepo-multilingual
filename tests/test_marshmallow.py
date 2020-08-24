@@ -27,6 +27,25 @@ def test_withoutApp():
     }
 
     assert data == MD().load(data)
+    data = {'title':
+        {
+            "en": "something",
+            "enus": "something different"
+        }
+    }
+
+    with pytest.raises(ValidationError):
+        MD().load(data)
+
+    data = {'title':
+        {
+            "en": "something",
+            "en-us": 1
+        }
+    }
+
+    with pytest.raises(ValidationError):
+        MD().load(data)
 
 
 def test_marshmallow(app):
@@ -54,25 +73,3 @@ def test_marshmallow(app):
     with pytest.raises(ValidationError):
         MD().load(data)
 
-
-    data = {'title':
-        {
-            "en": "something",
-            "enus": "something different"
-        }
-    }
-
-
-    with pytest.raises(ValidationError):
-        MD().load(data)
-
-    data = {'title':
-        {
-            "en": "something",
-            "en-us": 1
-        }
-    }
-
-
-    with pytest.raises(ValidationError):
-        MD().load(data)
