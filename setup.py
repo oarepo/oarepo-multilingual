@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Setup module for flask taxonomy."""
+"""Setup module for flask multilingual."""
 import os
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
-readme = open('README.rst').read()
+readme = open('README.md').read()
+history = open('CHANGES.md').read()
+
 
 install_requires = [
     'marshmallow',
@@ -12,13 +14,15 @@ install_requires = [
 ]
 
 tests_require = [
+    'invenio[base,metadata,sqlite,elasticsearch7]',
     'pytest>=4.6.3',
     'jsonschema',
     'pydocstyle',
     'isort',
     'check-manifest',
     'pytest-cov',
-    'pytest-pep8'
+    'pytest-pep8',
+    'oarepo-mapping-includes'
 ]
 
 extras_require = {
@@ -44,16 +48,18 @@ setup(
     version=version,
     url="https://github.com/oarepo/oarepo-multilingual",
     license="MIT",
-    author="Miroslav Simek",
-    author_email="miroslav.simek@vscht.cz",
+    author="Alzbeta Pokorna",
+    author_email="alzbeta.pokorna@cesnet.cz",
     description="Multilingual support for OARepo",
+    long_description=readme + '\n\n' + history,
+    long_description_content_type='text/markdown',
     zip_safe=False,
     packages=['oarepo_multilingual'],
     entry_points={
         'oarepo_mapping_handlers': [
             'multilingual=oarepo_multilingual.mapping.mapping_handler:handler'
         ],
-        'jsonschemas.schemas': [
+        'invenio_jsonschemas.schemas': [
             'oarepo_multilingual = oarepo_multilingual.jsonschemas'
         ],
     },
