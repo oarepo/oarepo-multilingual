@@ -20,7 +20,7 @@ cache:
 
 env:
   matrix:
-    - REQUIREMENTS=release EXTRAS=tests
+    - REQUIREMENTS=release EXTRAS=tests-es7
 
 python:
   - "3.8"
@@ -47,7 +47,7 @@ deploy:
   provider: pypi
   user: "__token__"
   password:
-   secure: "KwiHS+omTxXQPS9BB1zip1xNEXfdbBxB8Wx6E/rk7HRXsn3XsObOdJ6EqwaZt9wJEoGYRaApZnt1UNC2jTRZ6xbqf50dB5hnQaTVPV8zIg8IFAx8iiitmUUkpQBAGs+/8v5lku99RdBBl+yKD1bkdEoHjlaOsIEqFtNhY10wpHI5x/3eeGEIgZYoJpUj0uXYX0bRBa5heURkSFcJ29R+VAf+gByvhnUwjdVHBwTWu0qRP1mVww9c9utvWmCc/TCXldqExmWM5U28BPTiNYsaWiy7O+LqhKrfY9VcmdK9AR+pM/3glO+VDdOqH4V9dK3Ylrq1Nuy1mKzpb8AIjMqiZ7k8eNt8YYG0lZdmwynpEOGNG1rzM5M+cmVn82mclrU46gBTVedw/iS7NMTkf/agFX03zPijoo0Namsq6GaZAeCyYVVrEhyqxRqF50Rzizqj40z7K/LrOuX4tU7cMYcRP4vRjiO2anrif+9hjGPVLRT3DDlU2SEH9qyZhN+aaCglQLYYr12FJ79e61azumrTSJAxWSGZEgDbwbMPjcrsPDFsj700MaLqpzFCajuMqI59pUgu2aUyhSxljjcE3KB1RRrHzB3O2Ao+1sV3FnuEgaP45ZHIspXFz6wjPtSHFNqtyqjoT7VjOpX4HkuGLt0oyD+HSzdrvHW7fDODtyc4xS0="
+   secure: "FhP3ELd+vTYuL/YHEmi15nP4mFOutpXZOp4U1ik1F0j3k/GtjHa64g8TWhHVCsJrGzk65E01fqabtCLWHi5FRzDyd4PZj2rTPKg0yWtDo6w47eeQptx1mImxyTfHZUWduPEE8Xx4ImlefAqmrr0K3rxDmTpITSyuFaLpjgK950edgJxapEcu46rd2Rmmn5srTH1IuHrR2e1Ca0mrDBuEVOXALRFOcLk7/TFMBW3kBM3enYip8lVpl3gneSbBmCF1c/Py8fspvXYtxoWahWxKWlHKcbPobaJu46WcqOcKchU/xpOdKpHRrFTuvO4yt0nSEmQlc9HEOedeKeeYFyVrcPISI39RZ9r32k/t0RAqSM/Razuo6KORuP5Qb7mkE80i5e7aQdPjDdXrC/Q1N1WIfxxAetqS5mLRSowA9APoFLwTZ4XRNWyDOipw8UT1w+d7hviSOsjQi5jLzRf7HKhfjkxlM3ZyIV0eE7gvoSWR/t0bXrZ7E5cKCBUJpYKqG61nmIQaWFv9OJHicPWvWI8iXgYBFKW9SYE+1+KghL42tJy/W4NB0esslHB95btjQu6blpPRWAX1CKYi6VScriYCA0GcLZmHD2HPOpr7b5MXoBabrZvcojb1HhLe6Nlqi3TaG7C0bsnb4Vm6CajMmBUJNX5GQGLJqWdOOb3TMt6+G9s="
   on:
     tags: true
     branch: master
