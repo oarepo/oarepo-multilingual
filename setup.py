@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 readme = open('README.md').read()
 history = open('CHANGES.md').read()
-
+OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.2.1')
 
 install_requires = [
     'marshmallow',
@@ -28,10 +28,14 @@ tests_require = [
 extras_require = {
     'tests': [
         *tests_require,
-        ],
+
+        'oarepo[tests]~={version}'.format(
+            version=OAREPO_VERSION)],
     'tests-es7': [
         *tests_require,
-        ],
+        
+        'oarepo[tests-es7]~={version}'.format(
+            version=OAREPO_VERSION)],
 }
 
 setup_requires = [
