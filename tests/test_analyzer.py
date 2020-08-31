@@ -22,7 +22,6 @@ def test_analyzer():
     assert multilingual_analysis(app=app2) == {'analyzer': {}
         }
 
-    app2 = Flask('testapp')
     app2.config = {"SUPPORTED_LANGUAGES": ["cs"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
         "type": "custom",
         "char_filter": [
