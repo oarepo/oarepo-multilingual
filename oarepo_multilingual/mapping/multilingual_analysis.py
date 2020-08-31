@@ -2,6 +2,7 @@
 """Handler for multilingual analyzer."""
 from deepmerge import always_merger
 
+
 def multilingual_analysis(type=None, resource=None, id=None, json_pointer=None,
             app=None, content=None, root=None, content_pointer=None):
     """Use this function as handler."""
