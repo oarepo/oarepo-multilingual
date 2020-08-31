@@ -26,6 +26,7 @@ def test_included_pt(app):
     assert 'test-test-v1.0.0' in search.mappings
     with open(search.mappings['test-test-v1.0.0']) as f:
         data = json.load(f)
+
     assert data == {
         "mappings": {
             "properties": {

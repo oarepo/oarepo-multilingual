@@ -1,6 +1,6 @@
 from flask import Flask
 
-from oarepo_multilingual.mapping.multilingual_analysis import multilingual_analyzer
+from oarepo_multilingual.mapping.multilingual_analysis import multilingual_analysis
 
 
 def test_analyzer():
@@ -19,7 +19,7 @@ def test_analyzer():
         ]
     }}}}
 
-    assert multilingual_analyzer(app=app2) == {'analyzer': {}
+    assert multilingual_analysis(app=app2) == {'analyzer': {}
         }
 
     app2 = Flask('testapp')
@@ -37,7 +37,7 @@ def test_analyzer():
     }}}}
 
 
-    assert multilingual_analyzer(app=app2) == {
+    assert multilingual_analysis(app=app2) == {
         "analyzer": {"czech": {
             "type": "custom",
             "char_filter": [
@@ -78,7 +78,7 @@ def test_analyzer():
         }
     }
 
-    assert multilingual_analyzer(app=app2) == {
+    assert multilingual_analysis(app=app2) == {
         "analyzer": {"czech": {
         "type": "custom",
         "char_filter": [
@@ -132,7 +132,7 @@ def test_analyzer():
         }}
         }}
 
-    assert multilingual_analyzer(app=app2) == {
+    assert multilingual_analysis(app=app2) == {
         "analyzer": {"czech": {
             "type": "custom",
             "char_filter": [
@@ -187,7 +187,7 @@ def test_analyzer():
     }
                    }
 
-    assert multilingual_analyzer(app=app2) == {
+    assert multilingual_analysis(app=app2) == {
         "analyzer": {"czech": {
             "type": "custom",
             "char_filter": [
@@ -237,7 +237,7 @@ def test_analyzer():
     }
                    }
 
-    assert multilingual_analyzer(app=app2, id='title') == {
+    assert multilingual_analysis(app=app2, id='title') == {
         "analyzer": {"czech#title": {
             "type": "custom",
             "char_filter": [

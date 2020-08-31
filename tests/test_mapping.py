@@ -136,7 +136,7 @@ def test_mapping():
                                 }
 def test_ids():
     app = Flask('testapp')
-    app.config.update(SUPPORTED_LANGUAGES=["cs", "en"])
+    app.config.update(SUPPORTED_LANGUAGES=["cs"])
     app.config.update(ELASTICSEARCH_LANGUAGE_TEMPLATES={
         "cs#kontext":
             {
@@ -155,11 +155,10 @@ def test_ids():
                 "fields": {
                     "keywords": {
                         "type": "text"
-                    },
-                    "jej":
-                        {"type": "text"}
-                }
-            },
+                    }
+            }
+            }
+
 
     }
     )
@@ -176,3 +175,58 @@ def test_ids():
             }
 
                      }}
+
+    app.config.update(SUPPORTED_LANGUAGES=["cs", "en"])
+    app.config.update(ELASTICSEARCH_LANGUAGE_TEMPLATES={
+        "cs#kontext":
+            {
+                "type": "text",
+                "fields": {
+                    "keywords": {
+                        "type": "text"
+                    },
+                    "jej":
+                        {"type": "text"}
+                }
+            },
+        "cs":
+            {
+                "type": "text",
+                "fields": {
+                    "keywords": {
+                        "type": "keyword"
+                    }
+
+                }
+            },
+        "en":
+            {
+                "type": "text",
+                "fields": {
+                    "keywords": {
+                        "type": "keyword"
+                    }
+                }
+            },
+
+    }
+    )
+    assert handler(app=app, id='kontext') == {'type': 'object', 'properties':
+        {
+            'cs': {'type': 'text',
+                   'fields': {
+                       "keywords": {
+                           "type": "text"
+                       },
+                    "jej":
+                        {"type": "text"}
+                   }},
+            'en': {'type': 'text',
+                   'fields': {
+                       "keywords": {
+                           "type": "keyword"
+                       }
+                   }
+                   }
+        }
+                               }

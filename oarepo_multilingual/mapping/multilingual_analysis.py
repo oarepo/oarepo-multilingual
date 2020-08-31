@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- #
 """Handler for multilingual analyzer."""
-def multilingual_analzser(type=None, resource=None, id=None, json_pointer=None,
+def multilingual_analysis(type=None, resource=None, id=None, json_pointer=None,
             app=None, content=None, root=None, content_pointer=None):
     """Use this function as handler."""
     languages = app.config.get("SUPPORTED_LANGUAGES", [])
