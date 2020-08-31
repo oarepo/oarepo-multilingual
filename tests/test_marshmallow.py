@@ -8,10 +8,10 @@
 
 from __future__ import absolute_import, print_function
 
-import marshmallow
 import pytest
-from marshmallow import ValidationError
 
+import marshmallow
+from marshmallow import ValidationError
 from oarepo_multilingual.marshmallow import MultilingualStringV2
 
 
