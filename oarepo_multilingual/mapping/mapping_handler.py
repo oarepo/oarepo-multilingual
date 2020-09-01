@@ -8,19 +8,13 @@ def handler(type=None, resource=None, id=None, json_pointer=None,
     template = app.config.get("ELASTICSEARCH_LANGUAGE_TEMPLATES", {})
 
     data_dict= dict()
-    for x in languages:
+    for language in languages:
         if id is not None:
-            y = x + '#' + id
-            if y in template.keys():
-                data_dict[x] = template[y]
-            elif x in template.keys():
-                data_dict[x] = template[x]
-            else:
-                data_dict[x] = default_template
-        elif x in template.keys():
-            data_dict[x] = template[x]
-        else:
-            data_dict[x] = default_template
+            language_with_context = language + '#' + id
+            if language_with_context in template.keys():
+                data_dict[language] = template[language_with_context]
+                continue
+        data_dict[language] = template.get(language, default_template)
 
 
     return {

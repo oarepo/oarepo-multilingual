@@ -19,8 +19,8 @@ def test_analyzer():
         ]
     }}}}
 
-    assert multilingual_analysis(app=app2) == {'analyzer': {}
-        }
+    assert multilingual_analysis(app=app2) == {}
+
 
     app2.config = {"SUPPORTED_LANGUAGES": ["cs"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
         "type": "custom",
@@ -36,8 +36,7 @@ def test_analyzer():
     }}}}
 
 
-    assert multilingual_analysis(app=app2) == {
-        "analyzer": {"czech": {
+    assert multilingual_analysis(app=app2) == {"czech": {
             "type": "custom",
             "char_filter": [
                 "html_strip"
@@ -49,8 +48,10 @@ def test_analyzer():
                 "snowball"
             ]
         }
-    }}
-    app2.config = {"SUPPORTED_LANGUAGES": ["cs", "en"],"ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
+    }
+
+
+    app2.config = {"SUPPORTED_LANGUAGES": ["cs", "en"],"ELASTICSEARCH_LANGUAGE_ANALYSIS": {'cs': {'czech': {
         "type": "custom",
         "char_filter": [
             "html_strip"
@@ -77,8 +78,7 @@ def test_analyzer():
         }
     }
 
-    assert multilingual_analysis(app=app2) == {
-        "analyzer": {"czech": {
+    assert multilingual_analysis(app=app2) == {"czech": {
         "type": "custom",
         "char_filter": [
             "html_strip"
@@ -103,7 +103,7 @@ def test_analyzer():
                 ]
             }
         }
-    }
+
 
     app2.config = {"SUPPORTED_LANGUAGES": ["cs", "en"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
         "type": "custom",
@@ -131,8 +131,7 @@ def test_analyzer():
         }}
         }}
 
-    assert multilingual_analysis(app=app2) == {
-        "analyzer": {"czech": {
+    assert multilingual_analysis(app=app2) == {"czech": {
             "type": "custom",
             "char_filter": [
                 "html_strip"
@@ -157,7 +156,7 @@ def test_analyzer():
                 ]
             }
         }
-    }
+
 
     app2.config = {"SUPPORTED_LANGUAGES": ["cs", "en"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
         "type": "custom",
@@ -186,8 +185,7 @@ def test_analyzer():
     }
                    }
 
-    assert multilingual_analysis(app=app2) == {
-        "analyzer": {"czech": {
+    assert multilingual_analysis(app=app2) == {"czech": {
             "type": "custom",
             "char_filter": [
                 "html_strip"
@@ -212,7 +210,6 @@ def test_analyzer():
                 ]
             }
         }
-    }
 
     app2.config = {"SUPPORTED_LANGUAGES": ["cs", "en"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs#title": {"czech#title": {
         "type": "custom",
@@ -236,25 +233,12 @@ def test_analyzer():
     }
                    }
 
-    assert multilingual_analysis(app=app2, id='title') == {
-        "analyzer": {"czech#title": {
+    assert multilingual_analysis(app=app2, id='title') == {"czech#title": {
             "type": "custom",
             "char_filter": [
                 "html_strip"
             ],
             "tokenizer": "standard"
-        },
-            "czech": {
-                "type": "custom",
-                "char_filter": [
-                    "html_strip"
-                ],
-                "tokenizer": "standard",
-                "filter": [
-                    "lowercase",
-                    "stop",
-                    "snowball"
-                ]
-            }
         }
-    }
+        }
+

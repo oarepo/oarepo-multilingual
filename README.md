@@ -80,7 +80,45 @@ app.config.update(SUPPORTED_LANGUAGES = ["cs", "en"])
 ```
 Elastic search mapping
 ----------------------
-Defince type of your multilingual string as ``multilingual``
+Define type of your multilingual string as ``multilingual``
+Add to your configuration definition of `ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE` which will be used as default mapping template for supported languages.
+### Default template example
+```python
+ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE={
+            "type": "text",
+            "fields": {
+                "keywords": {
+                    "type": "keyword"
+                }
+            }
+        }
+```
+You can also specified different templates for specific languages with `ELASTICSEARCH_LANGUAGE_TEMPLATES`. Use `#` and `id` for adding more 
+templates for one specific language
+### Language templates example
+```python
+ELASTICSEARCH_LANGUAGE_TEMPLATES={
+        "cs": {
+            "type": "text",
+            "fields": {
+                "keywords": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "cs#plain": {
+            "type": "text",
+        },
+        "en": {
+            "type": "text",
+            "fields": {
+                "keywords": {
+                    "type": "keyword"
+                }
+            }
+        }
+    }
+```
 ### Usage example
 ```json
 {
@@ -92,6 +130,75 @@ Defince type of your multilingual string as ``multilingual``
   }
 }
 ```
+### Usage example with context
+```json
+{
+  "mappings": {
+    "properties": {
+    "title":
+      {"type": "multilingual#plain"}
+    }
+  }
+}
+```
+Analyzer configuration
+----------------------
+You can specified analysis in app configuration with `ELASTICSEARCH_LANGUAGE_ANALYSIS`. Use `#` and `id` for adding more 
+analysis for one specific language.
+### Language analysis example
+```python
+ELASTICSEARCH_LANGUAGE_ANALYSIS= {
+        "cs#title": {"czech#title": {
+        "type": "custom",
+        "char_filter": [
+            "html_strip"
+        ],
+        "tokenizer": "standard"
+        }},
+        "cs": {"czech": {
+            "type": "custom",
+            "char_filter": [
+                "html_strip"
+            ],
+            "tokenizer": "standard",
+            "filter": [
+                "lowercase",
+                "stop",
+                "snowball"
+            ]
+        }}
+    }
+```
+### Usage example
+```json
+{
+"settings":{
+      "analysis": {
+        "analyzer": {
+         "oarepo:extends": "multilingual_analysis"
+          }
+      }
+},
+"mappings": {
+   // ...
+}
+}
+```
+```json
+{
+"settings":{
+      "analysis": {
+        "analyzer": {
+         "oarepo:extends": "multilingual_analysis#title"
+          }
+      }
+},
+"mappings": {
+   // ...
+}
+}
+```
+
   [image]: https://img.shields.io/github/license/oarepo/oarepo-multilingual.svg
   [1]: https://github.com/oarepo/oarepo-multilingual/blob/master/LICENSE
   [2]: https://img.shields.io/travis/oarepo/oarepo-multilingual.svg
