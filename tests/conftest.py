@@ -51,6 +51,15 @@ def app(request):
         SQLALCHEMY_TRACK_MODIFICATIONS=True,
         SUPPORTED_LANGUAGES = ["cs", "en"],
         TESTING=True,
+        ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE={
+            "type": "text",
+            "fields": {
+                "keywords": {
+                    "type": "keyword"
+                }
+            }
+        }
+
     )
 
     app.secret_key = 'changeme'
