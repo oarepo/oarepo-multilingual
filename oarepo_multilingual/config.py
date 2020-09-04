@@ -1,6 +1,4 @@
-"""
-Multilingual extension default configuration.
-"""
+"""Multilingual extension default configuration."""
 
 
 ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE = {

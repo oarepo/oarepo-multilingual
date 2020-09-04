@@ -1,13 +1,9 @@
+"""Multilingual extension initialization."""
 from oarepo_multilingual import config
 
 
-"""
-Multilingual extension initialization.
-"""
-
-
 class OARepoMultilingualExt:
-    """Multilingual app"""
+    """Multilingual app."""
 
     def __init__(self, app, db=None):
         """
@@ -20,21 +16,19 @@ class OARepoMultilingualExt:
 
     def init_app(self, app, db=None):
         """
-        Initializes the extension.
+        Initialize the extension.
 
         :param app      the application
         :param db       database, not used
         """
-
         self.init_config(app)
 
     def init_config(self, app):
         """
-        Propagates default values to the configuration.
+        Propagate default values to the configuration.
 
         :param app      the application
         """
-
         app.config.setdefault(
             'ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE',
             config.ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE
