@@ -6,7 +6,6 @@ from setuptools import find_packages, setup
 
 readme = open('README.md').read()
 history = open('CHANGES.md').read()
-OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.2.1')
 
 install_requires = [
     'marshmallow',
@@ -14,28 +13,14 @@ install_requires = [
 ]
 
 tests_require = [
-    #'invenio[base,metadata,sqlite,elasticsearch7]',
-    # 'pytest>=4.6.3',
-    # 'jsonschema',
-    # 'pydocstyle',
-    # 'isort',
-    # 'check-manifest',
-    # 'pytest-cov',
-    # 'pytest-pep8',
     'oarepo-mapping-includes'
 ]
 
 extras_require = {
     'tests': [
         *tests_require,
-
-        'oarepo[tests]~={version}'.format(
-            version=OAREPO_VERSION)],
-    'tests-es7': [
-        *tests_require,
-
-        'oarepo[tests-es7]~={version}'.format(
-            version=OAREPO_VERSION)],
+        'oarepo[tests]'
+    ],
 }
 
 setup_requires = [
@@ -65,6 +50,12 @@ setup(
         ],
         'invenio_jsonschemas.schemas': [
             'oarepo_multilingual = oarepo_multilingual.jsonschemas'
+        ],
+        'invenio_base.apps': [
+            'oarepo_multilingual = oarepo_multilingual.ext:OARepoMultilingualExt'
+        ],
+        'invenio_base.api_apps': [
+            'oarepo_multilingual = oarepo_multilingual.ext:OARepoMultilingualExt'
         ],
     },
     include_package_data=True,
