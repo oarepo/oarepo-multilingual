@@ -66,6 +66,12 @@ setup(
         'invenio_jsonschemas.schemas': [
             'oarepo_multilingual = oarepo_multilingual.jsonschemas'
         ],
+        'invenio_base.apps': [
+            'oarepo_multilingual = oarepo_multilingual.ext:OARepoMultilingualExt'
+        ],
+        'invenio_base.api_apps': [
+            'oarepo_multilingual = oarepo_multilingual.ext:OARepoMultilingualExt'
+        ],
     },
     include_package_data=True,
     setup_requires=setup_requires,
