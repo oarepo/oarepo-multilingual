@@ -180,7 +180,7 @@ ELASTICSEARCH_LANGUAGE_ANALYSIS= {
       }
 },
 "mappings": {
-   // ...
+   ...
 }
 }
 ```
@@ -194,7 +194,7 @@ ELASTICSEARCH_LANGUAGE_ANALYSIS= {
       }
 },
 "mappings": {
-   // ...
+   ...
 }
 }
 ```
