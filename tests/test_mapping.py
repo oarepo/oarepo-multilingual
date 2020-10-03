@@ -16,7 +16,7 @@ def test_mapping():
     app.config.update( ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE={
             "type": "text",
             "fields": {
-                "keywords": {
+                "raw": {
                     "type": "keyword"
                 }
             }
@@ -30,13 +30,13 @@ def test_mapping():
         {
             'cs': {'type': 'text',
                    'fields': {
-                       "keywords": {
+                       "raw": {
                            "type": "keyword"
                        }
                    }},
             'en': {'type': 'text',
                    'fields': {
-                       "keywords": {
+                       "raw": {
                            "type": "keyword"
                        }
                    }
@@ -53,7 +53,7 @@ def test_mapping():
         {
             'cs': {'type': 'text',
                    'fields': {
-                       "keywords": {
+                       "raw": {
                            "type": "keyword"
                        }
                    }}
@@ -64,7 +64,7 @@ def test_mapping():
         "cs": {
             "type": "text",
             "fields": {
-                "keywords": {
+                "raw": {
                     "type": "text"
                 }
             }
@@ -72,7 +72,7 @@ def test_mapping():
         "en": {
             "type": "text",
             "fields": {
-                "keywords": {
+                "raw": {
                     "type": "text"
                 }
             }
@@ -85,7 +85,7 @@ def test_mapping():
             'cs': {
             "type": "text",
             "fields": {
-                "keywords": {
+                "raw": {
                     "type": "text"
                 }
             }
@@ -93,7 +93,7 @@ def test_mapping():
             'en': {
                 "type": "text",
                 "fields": {
-                    "keywords": {
+                    "raw": {
                         "type": "text"
                     }
                 }
@@ -106,7 +106,7 @@ def test_mapping():
         "cs": {
             "type": "text",
             "fields": {
-                "keywords": {
+                "raw": {
                     "type": "text"
                 }
             }
@@ -119,7 +119,7 @@ def test_mapping():
             'cs': {
                 "type": "text",
                 "fields": {
-                    "keywords": {
+                    "raw": {
                         "type": "text"
                     }
                 }
@@ -127,7 +127,7 @@ def test_mapping():
             'en': {
                 "type": "text",
                 "fields": {
-                    "keywords": {
+                    "raw": {
                         "type": "keyword"
                     }
                 }
@@ -142,7 +142,7 @@ def test_ids():
             {
                 "type": "text",
                 "fields": {
-                    "keywords": {
+                    "raw": {
                         "type": "text"
                     },
                     "jej":
@@ -153,7 +153,7 @@ def test_ids():
             {
                 "type": "text",
                 "fields": {
-                    "keywords": {
+                    "raw": {
                         "type": "text"
                     }
             }
@@ -167,7 +167,7 @@ def test_ids():
             'cs': {
                 "type": "text",
                 "fields": {
-                    "keywords": {
+                    "raw": {
                         "type": "text"
                     },
                     "jej": {"type":"text"}
@@ -182,7 +182,7 @@ def test_ids():
             {
                 "type": "text",
                 "fields": {
-                    "keywords": {
+                    "raw": {
                         "type": "text"
                     },
                     "jej":
@@ -193,7 +193,7 @@ def test_ids():
             {
                 "type": "text",
                 "fields": {
-                    "keywords": {
+                    "raw": {
                         "type": "keyword"
                     }
 
@@ -203,7 +203,7 @@ def test_ids():
             {
                 "type": "text",
                 "fields": {
-                    "keywords": {
+                    "raw": {
                         "type": "keyword"
                     }
                 }
@@ -215,7 +215,7 @@ def test_ids():
         {
             'cs': {'type': 'text',
                    'fields': {
-                       "keywords": {
+                       "raw": {
                            "type": "text"
                        },
                     "jej":
@@ -223,7 +223,7 @@ def test_ids():
                    }},
             'en': {'type': 'text',
                    'fields': {
-                       "keywords": {
+                       "raw": {
                            "type": "keyword"
                        }
                    }

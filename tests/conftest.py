@@ -54,7 +54,7 @@ def app(request):
         ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE={
             "type": "text",
             "fields": {
-                "keywords": {
+                "raw": {
                     "type": "keyword"
                 }
             }
