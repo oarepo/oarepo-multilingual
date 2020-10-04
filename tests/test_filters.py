@@ -3,8 +3,13 @@ import logging
 import pytest
 from invenio_i18n import InvenioI18N
 
-from oarepo_multilingual import language_aware_text_terms_filter, language_aware_terms_filter, \
-    language_aware_text_term_facet, language_aware_term_facet, language_aware_text_match_filter
+from oarepo_multilingual import (
+    language_aware_term_facet,
+    language_aware_terms_filter,
+    language_aware_text_match_filter,
+    language_aware_text_term_facet,
+    language_aware_text_terms_filter,
+)
 
 
 def test_no_i18n(app, caplog):

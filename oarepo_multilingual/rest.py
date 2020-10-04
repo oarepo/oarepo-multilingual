@@ -1,7 +1,8 @@
 """Language aware filters, matchers and facets for invenio-records-rest."""
-from invenio_i18n.selectors import get_locale
-from elasticsearch_dsl import Q
 import logging
+
+from elasticsearch_dsl import Q
+from invenio_i18n.selectors import get_locale
 
 log = logging.getLogger('oarepo-multilingual.rest')
 
