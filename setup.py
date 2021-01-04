@@ -9,7 +9,8 @@ history = open('CHANGES.md').read()
 
 install_requires = [
     'marshmallow',
-    'flask'
+    'flask',
+    'pycountry'
 ]
 
 tests_require = [
