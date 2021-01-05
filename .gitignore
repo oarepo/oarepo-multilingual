@@ -64,3 +64,4 @@ venv/
 
 .venv/
 .envrc
+.python-version
