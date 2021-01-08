@@ -22,9 +22,9 @@ def test_mapping():
             }
         })
 
-    app.config.update(SUPPORTED_LANGUAGES = ["cs", "en"])
+    app.config.update(SUPPORTED_LANGUAGES = ["cs", "en", "??"])
 
-    assert ["cs", "en"] == app.config["SUPPORTED_LANGUAGES"]
+    assert ["cs", "en", "??"] == app.config["SUPPORTED_LANGUAGES"]
 
     assert handler(app=app) == {'type': 'object', 'properties':
         {
@@ -40,7 +40,14 @@ def test_mapping():
                            "type": "keyword"
                        }
                    }
-                   }
+                   },
+            '??': {'type': 'text',
+                               'fields': {
+        "raw": {
+            "type": "keyword"
+        }
+    }
+    }
         }
                                }
     app.config.update(SUPPORTED_LANGUAGES = [])

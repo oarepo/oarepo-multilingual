@@ -27,6 +27,7 @@ class MultilingualStringPartSchemaV2(Schema):
     def validate_schema(self, data, **kwargs):
         list_data = list(data)
         for s in list_data:
+            if s == "??": continue #defalut value
             try:
                 if "SUPPORTED_LANGUAGES" in current_app.config and s not in current_app.config["SUPPORTED_LANGUAGES"]:
                     raise ValidationError(s, "Wrong language name. Supported languages: %s" % current_app.config[
