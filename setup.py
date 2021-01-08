@@ -9,10 +9,12 @@ history = open('CHANGES.md').read()
 
 install_requires = [
     'marshmallow',
-    'flask'
+    'flask',
+    'pycountry'
 ]
 
 tests_require = [
+    'pytest-invenio[docs]==1.3.4',
     'oarepo-mapping-includes'
 ]
 

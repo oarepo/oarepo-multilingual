@@ -15,6 +15,7 @@ import tempfile
 
 import pytest
 from flask import Flask
+from flask_babelex import lazy_gettext as _
 from invenio_base.signals import app_loaded
 from invenio_db import InvenioDB
 from invenio_indexer import InvenioIndexer
@@ -49,12 +50,16 @@ def app(request):
             'SQLALCHEMY_DATABASE_URI', 'sqlite:///test.db'
         ),
         SQLALCHEMY_TRACK_MODIFICATIONS=True,
-        SUPPORTED_LANGUAGES = ["cs", "en"],
+        SUPPORTED_LANGUAGES=["cs", "en"],
+        BABEL_DEFAULT_LOCALE='cs',
+        I18N_LANGUAGES=(
+            ('en', _('English')),
+        ),
         TESTING=True,
         ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE={
             "type": "text",
             "fields": {
-                "keywords": {
+                "raw": {
                     "type": "keyword"
                 }
             }

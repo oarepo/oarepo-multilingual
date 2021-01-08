@@ -34,13 +34,13 @@ def test_included_pt(app):
                     {
                         'cs': {'type': 'text',
                                'fields': {
-                                   "keywords": {
+                                   "raw": {
                                        "type": "keyword"
                                    }
                                }},
                         'en': {'type': 'text',
                                'fields': {
-                                   "keywords": {
+                                   "raw": {
                                        "type": "keyword"
                                    }
                                }
