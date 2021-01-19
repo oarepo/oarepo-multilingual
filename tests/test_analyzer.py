@@ -22,7 +22,7 @@ def test_analyzer():
     assert multilingual_analysis(app=app2) == {}
 
 
-    app2.config = {"SUPPORTED_LANGUAGES": ["cs"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
+    app2.config = {"MULTILINGUAL_SUPPORTED_LANGUAGES": ["cs","_"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
         "type": "custom",
         "char_filter": [
             "html_strip"
@@ -50,7 +50,7 @@ def test_analyzer():
         }
     }
 
-    app2.config = {"ELASTICSEARCH_LANGUAGE_ANALYSIS": {"_": {"czech": {
+    app2.config = {"MULTILINGUAL_SUPPORTED_LANGUAGES": ["_"],"ELASTICSEARCH_LANGUAGE_ANALYSIS": {"_": {"czech": {
         "type": "custom",
         "char_filter": [
             "html_strip"
@@ -77,7 +77,7 @@ def test_analyzer():
     }
     }
 
-    app2.config = {"SUPPORTED_LANGUAGES": ["cs", "en"],"ELASTICSEARCH_LANGUAGE_ANALYSIS": {'cs': {'czech': {
+    app2.config = {"MULTILINGUAL_SUPPORTED_LANGUAGES": ["cs", "en"],"ELASTICSEARCH_LANGUAGE_ANALYSIS": {'cs': {'czech': {
         "type": "custom",
         "char_filter": [
             "html_strip"
@@ -131,7 +131,7 @@ def test_analyzer():
         }
 
 
-    app2.config = {"SUPPORTED_LANGUAGES": ["cs", "en"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
+    app2.config = {"MULTILINGUAL_SUPPORTED_LANGUAGES": ["cs", "en"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
         "type": "custom",
         "char_filter": [
             "html_strip"
@@ -184,7 +184,7 @@ def test_analyzer():
         }
 
 
-    app2.config = {"SUPPORTED_LANGUAGES": ["cs", "en"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
+    app2.config = {"MULTILINGUAL_SUPPORTED_LANGUAGES": ["cs", "en"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs": {"czech": {
         "type": "custom",
         "char_filter": [
             "html_strip"
@@ -237,7 +237,7 @@ def test_analyzer():
             }
         }
 
-    app2.config = {"SUPPORTED_LANGUAGES": ["cs", "en"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs#title": {"czech#title": {
+    app2.config = {"MULTILINGUAL_SUPPORTED_LANGUAGES": ["cs", "en"], "ELASTICSEARCH_LANGUAGE_ANALYSIS": {"cs#title": {"czech#title": {
         "type": "custom",
         "char_filter": [
             "html_strip"

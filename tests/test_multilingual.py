@@ -13,7 +13,9 @@ def get_schema():
 
     return schema
 
-
+def test_msl(app):
+    print(dir(app.config))
+    print(app.config.get("COSI"))
 def test_included_pt(app):
     """Test multilingual."""
     search = app.extensions['invenio-search']
