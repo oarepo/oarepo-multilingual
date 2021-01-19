@@ -50,6 +50,32 @@ def test_analyzer():
         }
     }
 
+    app2.config = {"ELASTICSEARCH_LANGUAGE_ANALYSIS": {"_": {"czech": {
+        "type": "custom",
+        "char_filter": [
+            "html_strip"
+        ],
+        "tokenizer": "standard",
+        "filter": [
+            "lowercase",
+            "stop",
+            "snowball"
+        ]
+    }}}}
+
+    assert multilingual_analysis(app=app2) == {"czech": {
+        "type": "custom",
+        "char_filter": [
+            "html_strip"
+        ],
+        "tokenizer": "standard",
+        "filter": [
+            "lowercase",
+            "stop",
+            "snowball"
+        ]
+    }
+    }
 
     app2.config = {"SUPPORTED_LANGUAGES": ["cs", "en"],"ELASTICSEARCH_LANGUAGE_ANALYSIS": {'cs': {'czech': {
         "type": "custom",

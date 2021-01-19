@@ -9,7 +9,8 @@ def multilingual_analysis(type=None, resource=None, id=None, json_pointer=None,
                           app=None, content=None, root=None, content_pointer=None):
     """Use this function as handler."""
     languages = app.config.get("SUPPORTED_LANGUAGES", [])
-
+    if "_" not in languages:
+        languages.append("_")
     analyzer = app.config.get("ELASTICSEARCH_LANGUAGE_ANALYSIS", {})
 
     analysis_list = list()
