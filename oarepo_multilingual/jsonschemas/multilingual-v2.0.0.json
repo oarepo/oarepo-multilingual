@@ -8,7 +8,8 @@
       {
         "^[a-z][a-z]$" : {"type": "string"},
         "^[a-z][a-z]-[a-z][a-z]$" : {"type": "string"},
-        "\\?\\?": {"type" :  "string"}
+        "^_$": {"type" :  "string"}
+
       }
     }
 

@@ -23,7 +23,7 @@ def test_withoutApp():
         {
             "en": "something",
             "cs": "neco jineho",
-            "??" : "kch"
+            "_" : "kch"
         }
     }
 
