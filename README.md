@@ -17,7 +17,7 @@ Usage
 ----------
 The library provides multilingual type for json schema with marshmallow validation and deserialization and elastic search mapping.
 Multilingual is type which allows you to add multilingual strings in your json schema in format ``"en":"something, 
-"en-us":"something else"``. 
+"en-us":"something else"`` or default value ``"_" : "default value"``
 
 JSON Schema
 ----------
