@@ -7,7 +7,9 @@
       "patternProperties":
       {
         "^[a-z][a-z]$" : {"type": "string"},
-        "^[a-z][a-z]-[a-z][a-z]$" : {"type": "string"}
+        "^[a-z][a-z]-[a-z][a-z]$" : {"type": "string"},
+        "^_$": {"type" :  "string"}
+
       }
     }
 

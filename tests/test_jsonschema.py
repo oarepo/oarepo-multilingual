@@ -52,6 +52,9 @@ def test_json():
     data = json.loads('{"title": {"cs" : "xxx","cs-en": "yyyy", "em": "jejej"}}')
     assert validation(data, schema, schema_url)
 
+    data = json.loads('{"title": {"_" : "xxx","cs-en": "yyyy", "em": "jejej"}}')
+    assert validation(data, schema, schema_url)
+
     data2 = json.loads('{"title": {"css": "xxx"}}')
     assert validationError(data2, schema, schema_url)
 

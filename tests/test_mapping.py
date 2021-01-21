@@ -22,9 +22,7 @@ def test_mapping():
             }
         })
 
-    app.config.update(SUPPORTED_LANGUAGES = ["cs", "en"])
-
-    assert ["cs", "en"] == app.config["SUPPORTED_LANGUAGES"]
+    app.config.update(MULTILINGUAL_SUPPORTED_LANGUAGES = ["cs", "en", "_"])
 
     assert handler(app=app) == {'type': 'object', 'properties':
         {
@@ -40,15 +38,29 @@ def test_mapping():
                            "type": "keyword"
                        }
                    }
-                   }
+                   },
+            '_': {'type': 'text',
+                               'fields': {
+        "raw": {
+            "type": "keyword"
+        }
+    }
+    }
         }
                                }
-    app.config.update(SUPPORTED_LANGUAGES = [])
+    app.config.update(MULTILINGUAL_SUPPORTED_LANGUAGES = ["_"])
     assert handler(app=app) == {'type': 'object', 'properties':
         {
+                                '_': {'type': 'text',
+                                      'fields': {
+                                          "raw": {
+                                              "type": "keyword"
+                                          }
+                                      }
+                                      }
         }
                                 }
-    app.config.update(SUPPORTED_LANGUAGES = ["cs"])
+    app.config.update(MULTILINGUAL_SUPPORTED_LANGUAGES = ["cs", "_"])
     assert handler(app=app) == {'type': 'object', 'properties':
         {
             'cs': {'type': 'text',
@@ -56,10 +68,17 @@ def test_mapping():
                        "raw": {
                            "type": "keyword"
                        }
-                   }}
+                   }},
+            '_': {'type': 'text',
+                               'fields': {
+        "raw": {
+            "type": "keyword"
+        }
+    }
+    }
         }
                                 }
-    app.config.update(SUPPORTED_LANGUAGES=["cs", "en"])
+    app.config.update(MULTILINGUAL_SUPPORTED_LANGUAGES=["cs", "en", "_"])
     app.config.update(ELASTICSEARCH_LANGUAGE_TEMPLATES={
         "cs": {
             "type": "text",
@@ -76,7 +95,14 @@ def test_mapping():
                     "type": "text"
                 }
             }
+        },
+            '_': {'type': 'text',
+                               'fields': {
+        "raw": {
+            "type": "keyword"
         }
+    }
+    }
     }
     )
 
@@ -97,11 +123,18 @@ def test_mapping():
                         "type": "text"
                     }
                 }
-            }
+            },
+                                '_': {'type': 'text',
+                                      'fields': {
+                                          "raw": {
+                                              "type": "keyword"
+                                          }
+                                      }
+                                      }
         }
                                 }
 
-    app.config.update(SUPPORTED_LANGUAGES=["cs", "en"])
+    app.config.update(MULTILINGUAL_SUPPORTED_LANGUAGES=["cs", "en", "_"])
     app.config.update(ELASTICSEARCH_LANGUAGE_TEMPLATES={
         "cs": {
             "type": "text",
@@ -131,14 +164,53 @@ def test_mapping():
                         "type": "keyword"
                     }
                 }
+            },
+            '_': {'type': 'text',
+                               'fields': {
+        "raw": {
+            "type": "keyword"
+        }
+    }
+    }
+        }
+                                }
+    app.config.update(MULTILINGUAL_SUPPORTED_LANGUAGES=["en", "_"])
+    app.config.update(ELASTICSEARCH_LANGUAGE_TEMPLATES={
+        "_": {
+            "type": "text",
+            "fields": {
+                "raw": {
+                    "type": "text"
+                }
             }
+        }
+    }
+    )
+
+    assert handler(app=app) == {'type': 'object', 'properties':
+        {
+            'en': {
+                "type": "text",
+                "fields": {
+                    "raw": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            '_': {'type': 'text',
+                               'fields': {
+        "raw": {
+            "type": "text"
+        }
+    }
+    }
         }
                                 }
 def test_ids():
     app = Flask('testapp')
-    app.config.update(SUPPORTED_LANGUAGES=["cs"])
+    app.config.update(MULTILINGUAL_SUPPORTED_LANGUAGES=["cs", "_"])
     app.config.update(ELASTICSEARCH_LANGUAGE_TEMPLATES={
-        "cs#kontext":
+        "cs#context":
             {
                 "type": "text",
                 "fields": {
@@ -162,7 +234,7 @@ def test_ids():
 
     }
     )
-    assert handler(app=app, id='kontext') == {'type': 'object', 'properties':
+    assert handler(app=app, id='context') == {'type': 'object', 'properties':
         {
             'cs': {
                 "type": "text",
@@ -172,13 +244,15 @@ def test_ids():
                     },
                     "jej": {"type":"text"}
                 }
-            }
+            },
+            '_': {}
+
 
                      }}
 
-    app.config.update(SUPPORTED_LANGUAGES=["cs", "en"])
+    app.config.update(MULTILINGUAL_SUPPORTED_LANGUAGES=["cs", "en", "_"])
     app.config.update(ELASTICSEARCH_LANGUAGE_TEMPLATES={
-        "cs#kontext":
+        "cs#context":
             {
                 "type": "text",
                 "fields": {
@@ -208,10 +282,20 @@ def test_ids():
                     }
                 }
             },
+        "_#context":
+            {
+                "type": "text",
+                "fields": {
+                    "raw": {
+                        "type": "text"
+                    }
+                }
+            }
+
 
     }
     )
-    assert handler(app=app, id='kontext') == {'type': 'object', 'properties':
+    assert handler(app=app, id='context') == {'type': 'object', 'properties':
         {
             'cs': {'type': 'text',
                    'fields': {
@@ -225,6 +309,13 @@ def test_ids():
                    'fields': {
                        "raw": {
                            "type": "keyword"
+                       }
+                   }
+                   },
+            '_': {'type': 'text',
+                   'fields': {
+                       "raw": {
+                           "type": "text"
                        }
                    }
                    }

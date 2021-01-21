@@ -44,7 +44,13 @@ def test_included_pt(app):
                                        "type": "keyword"
                                    }
                                }
-                               }
+                               },
+                        '_': {'type': 'text',
+                               'fields': {
+                                   "raw": {
+                                       "type": "keyword"
+                                   }
+                               }}
                     }
                           }
             }

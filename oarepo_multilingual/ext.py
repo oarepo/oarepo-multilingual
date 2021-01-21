@@ -33,3 +33,9 @@ class OARepoMultilingualExt:
             'ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE',
             config.ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE
         )
+        if 'MULTILINGUAL_SUPPORTED_LANGUAGES' not in app.config:
+            app.config.setdefault("MULTILINGUAL_SUPPORTED_LANGUAGES", app.config.get("SUPPORTED_LANGUAGES") + ["_"])
+        elif "_" not in app.config.get('MULTILINGUAL_SUPPORTED_LANGUAGES'):
+            app.config.update(MULTILINGUAL_SUPPORTED_LANGUAGES = app.config.get('MULTILINGUAL_SUPPORTED_LANGUAGES') + ["_"])
+
+

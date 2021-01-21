@@ -3,7 +3,8 @@
 def handler(type=None, resource=None, id=None, json_pointer=None,
             app=None, content=None, root=None, content_pointer=None):
     """Use this function as handler."""
-    languages = app.config.get("SUPPORTED_LANGUAGES", [])
+    languages = list(app.config.get("MULTILINGUAL_SUPPORTED_LANGUAGES", []))
+
     default_template = app.config.get("ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE", {})
     template = app.config.get("ELASTICSEARCH_LANGUAGE_TEMPLATES", {})
 

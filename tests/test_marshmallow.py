@@ -22,7 +22,8 @@ def test_withoutApp():
     data = {'title':
         {
             "en": "something",
-            "cs": "neco jineho"
+            "cs": "neco jineho",
+            "_" : "kch"
         }
     }
 

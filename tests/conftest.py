@@ -24,7 +24,7 @@ from invenio_pidstore import InvenioPIDStore
 from invenio_records import InvenioRecords
 from invenio_search import InvenioSearch
 from oarepo_mapping_includes.ext import OARepoMappingIncludesExt
-
+from oarepo_multilingual.ext import OARepoMultilingualExt
 
 @pytest.yield_fixture(scope="function")
 def app(request):
@@ -56,6 +56,7 @@ def app(request):
             ('en', _('English')),
         ),
         TESTING=True,
+        MULTILINGUAL_SUPPORTED_LANGUAGES=["cs", "en"],
         ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE={
             "type": "text",
             "fields": {
@@ -76,6 +77,7 @@ def app(request):
     InvenioSearch(app)
     InvenioIndexer(app)
     OARepoMappingIncludesExt(app)
+    OARepoMultilingualExt(app)
     #
     app_loaded.send(app, app=app)
 
