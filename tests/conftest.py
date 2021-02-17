@@ -56,7 +56,6 @@ def app(request):
             ('en', _('English')),
         ),
         TESTING=True,
-        MULTILINGUAL_SUPPORTED_LANGUAGES=["cs", "en"],
         ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE={
             "type": "text",
             "fields": {
