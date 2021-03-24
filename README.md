@@ -119,6 +119,26 @@ ELASTICSEARCH_LANGUAGE_TEMPLATES={
         }
     }
 ```
+
+It can be used a placeholder '*' instead of particular language and schema will be used for all SUPPORTED LANGUAGES. 
+The placeholder '*' can be used in whole schema at the any level. Currently suported placeholeder is only *, but it 
+will be changed.
+
+```python
+ELASTICSEARCH_LANGUAGE_TEMPLATES={
+        "*#context": {
+            "type": "text",
+            "copy_to": "field.*",
+            "fields": {
+                "raw": {
+                    "type": "keyword"
+                }
+            }
+        }
+
+    }
+```
+
 ### Usage example
 ```json
 {
@@ -141,6 +161,7 @@ ELASTICSEARCH_LANGUAGE_TEMPLATES={
   }
 }
 ```
+
 Analyzer configuration
 ----------------------
 You can specified analysis in app configuration with `ELASTICSEARCH_LANGUAGE_ANALYSIS`. Use `#` and `id` for adding more 
