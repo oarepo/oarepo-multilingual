@@ -26,6 +26,7 @@ from invenio_search import InvenioSearch
 from oarepo_mapping_includes.ext import OARepoMappingIncludesExt
 from oarepo_multilingual.ext import OARepoMultilingualExt
 
+
 @pytest.yield_fixture(scope="function")
 def app(request):
     """Test multilingual."""
@@ -63,6 +64,81 @@ def app(request):
                     "type": "keyword"
                 }
             }
+        }
+
+    )
+
+    app.secret_key = 'changeme'
+
+    InvenioDB(app)
+    InvenioRecords(app)
+    InvenioJSONSchemas(app)
+    InvenioPIDStore(app)
+    InvenioSearch(app)
+    InvenioIndexer(app)
+    OARepoMappingIncludesExt(app)
+    OARepoMultilingualExt(app)
+    #
+    app_loaded.send(app, app=app)
+
+    with app.app_context():
+        yield app
+
+    # Teardown instance path.
+    shutil.rmtree(instance_path)
+
+
+@pytest.yield_fixture(scope="function")
+def app_placeholder(request):
+    """Test multilingual."""
+    instance_path = tempfile.mkdtemp()
+    app = Flask('testapp', instance_path=instance_path)
+
+    app.config.update(
+        ACCOUNTS_JWT_ENABLE=False,
+        INDEXER_DEFAULT_DOC_TYPE='record-v1.0.0',
+        RECORDS_REST_ENDPOINTS={},
+        RECORDS_REST_DEFAULT_CREATE_PERMISSION_FACTORY=None,
+        RECORDS_REST_DEFAULT_DELETE_PERMISSION_FACTORY=None,
+        RECORDS_REST_DEFAULT_READ_PERMISSION_FACTORY=None,
+        RECORDS_REST_DEFAULT_UPDATE_PERMISSION_FACTORY=None,
+        SERVER_NAME='localhost:5000',
+        JSONSCHEMAS_HOST='localhost:5000',
+        CELERY_ALWAYS_EAGER=True,
+        CELERY_RESULT_BACKEND='cache',
+        CELERY_CACHE_BACKEND='memory',
+        CELERY_EAGER_PROPAGATES_EXCEPTIONS=True,
+        SQLALCHEMY_DATABASE_URI=os.environ.get(
+            'SQLALCHEMY_DATABASE_URI', 'sqlite:///test.db'
+        ),
+        SQLALCHEMY_TRACK_MODIFICATIONS=True,
+        SUPPORTED_LANGUAGES=['cs', 'en', 'sk', 'de', 'fr', 'ru', 'es', 'nl', 'it',
+                                          'no', 'pl', 'da', 'el',
+                                          'hu', 'lt', 'pt', 'bg', 'ro', 'sv'],
+        BABEL_DEFAULT_LOCALE='cs',
+        I18N_LANGUAGES=(
+            ('en', _('English')),
+        ),
+        TESTING=True,
+        ELASTICSEARCH_DEFAULT_LANGUAGE_TEMPLATE={
+            "type": "text",
+            "fields": {
+                "raw": {
+                    "type": "keyword"
+                }
+            }
+        },
+        ELASTICSEARCH_LANGUAGE_TEMPLATES={
+            "*#context": {
+                "type": "text",
+                "copy_to": "field.*",
+                "fields": {
+                    "raw": {
+                        "type": "keyword"
+                    }
+                }
+            }
+
         }
 
     )
